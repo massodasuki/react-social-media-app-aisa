@@ -150,14 +150,14 @@ function App() {
         position="relative"
       >
         {isLoading ? <Loading /> : null}
-        {isLoggedIn && location.pathname !== PageURLs.SIGN_IN ? <Topbar /> : null}
+        {isLoggedIn && location.pathname !== PageURLs.HOME ? <Topbar /> : null}
 
         <Routes>
           <Route
             path={PageURLs.HOME}
             element={
               <ProtectedRoute
-                isProtected={isLoggedIn}
+                isProtected={!isLoggedIn}
                 component={<Home />}
               />
             }
@@ -166,7 +166,7 @@ function App() {
             path={`${PageURLs.PROFILE}/:userId`}
             element={
               <ProtectedRoute
-                isProtected={isLoggedIn}
+                isProtected={!isLoggedIn}
                 component={<Profile />}
               />
             }
